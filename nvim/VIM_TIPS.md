@@ -47,6 +47,7 @@ end, { desc = '[C]opy [E]rror message' })
 ### Navigate Between Errors
 
 **Keybindings:**
+
 - `]e` - Next error/warning
 - `[e` - Previous error/warning
 
@@ -100,6 +101,7 @@ require('telescope.builtin').live_grep()
 **Use Case:** Find all usages of "saveEvent" across your codebase, including in comments and strings.
 
 **Requirements:** Install `ripgrep` for fast text searching:
+
 ```bash
 brew install ripgrep  # macOS
 ```
@@ -121,6 +123,7 @@ require('telescope.builtin').buffers()
 Mark frequently accessed files for instant navigation, especially useful when working across multiple classes.
 
 **Keybindings:**
+
 - `<Tab>s` - Show marked files
 - `<Tab>a` - Add current file to marks
 - `<Tab>[` - Previous marked file
@@ -128,6 +131,7 @@ Mark frequently accessed files for instant navigation, especially useful when wo
 - `1-9` in harpoon menu - Jump to specific mark
 
 **Setup:**
+
 ```lua
 local harpoon = require('harpoon')
 vim.keymap.set('n', '<Tab>s', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
@@ -145,6 +149,7 @@ vim.keymap.set('n', '<Tab>]', function() harpoon:list():next() end)
 When debugging or working in large files, mark specific lines of interest.
 
 **Keybindings:**
+
 - `m` - Mark current line
 - View marks in harpoon menu (`<Tab>s`)
 - Delete marks with `d1`, `d2`, etc.
@@ -225,7 +230,8 @@ Rename a variable, method, or class across the entire project. LSP ensures all r
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
 ```
 
-**Requirements:** 
+**Requirements:**
+
 - Project must compile without errors
 - LSP must have indexed the entire project
 
@@ -242,6 +248,7 @@ vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]c
 ```
 
 **Common Actions in Java:**
+
 - Organize imports
 - Generate constructor
 - Generate getters/setters
@@ -273,24 +280,29 @@ When LSP rename isn't available (e.g., due to compilation errors), use grep + qu
 **Steps:**
 
 1. **Search for the term:**
+
    ```
    <leader>fg
    Balance
    ```
 
 2. **Send results to quickfix list:**
+
    ```
    Ctrl+Q
    ```
 
 3. **Replace in quickfix:**
+
    ```
    :cdo s/Balance/Amount/gc
    ```
+
    - `c` flag prompts for confirmation on each replacement
    - `y` to confirm, `n` to skip, `a` for all remaining
 
 4. **Save all changed files:**
+
    ```
    :wa
    ```
@@ -302,6 +314,7 @@ When LSP rename isn't available (e.g., due to compilation errors), use grep + qu
 ### Move Lines with Auto-Indent
 
 **Keybindings (Visual mode):**
+
 - `Shift+J` - Move selection down (auto-indents)
 - `Shift+K` - Move selection up (auto-indents)
 
@@ -319,12 +332,14 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
 Quickly add, change, or delete surrounding characters (quotes, brackets, tags).
 
 **Common Operations:**
+
 - `ys{motion}{char}` - Add surround
 - `cs{old}{new}` - Change surround
 - `ds{char}` - Delete surround
 - `S{char}` in visual mode - Surround selection
 
 **Examples:**
+
 ```
 ysiw"        - Surround inner word with "
 cs"'         - Change " to '
@@ -337,6 +352,7 @@ v2jS(        - Select 3 lines and surround with ()
 ### Comment Toggling
 
 **Keybindings:**
+
 - `gcc` - Toggle comment on current line
 - `gc{motion}` - Comment motion (e.g., `gc2j` comments current + 2 lines below)
 - `gc3k` - Comment current line and 3 lines above
@@ -358,12 +374,14 @@ Open a floating terminal window within Neovim for quick commands without leaving
 **Keybinding:** `<leader>t` (or custom)
 
 **Features:**
+
 - Persistent across toggles (processes keep running)
 - Run background jobs (e.g., Docker containers)
 - Execute git commands quickly
 - Per-buffer state maintained
 
 **Setup Example:**
+
 ```lua
 vim.keymap.set('n', '<leader>t', function()
   vim.cmd('split | terminal')
@@ -386,6 +404,7 @@ Display Vim help in a centered floating window instead of a split, making docume
 **Keybinding:** `:help {topic}` (automatically uses floating window if configured)
 
 **Setup:**
+
 ```lua
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'help',
@@ -451,4 +470,3 @@ vim.api.nvim_create_autocmd('FileType', {
 ---
 
 *This guide prioritizes practical, workflow-oriented techniques following the KISS principle: Keep It Simple and Stupid.*
-
