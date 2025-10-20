@@ -10,6 +10,11 @@ fi
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# Ensure system binaries are always in PATH
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+
+export PATH="$PATH:/Users/ducvo/Developer/java-projects/test-java/worldbanc/private/bin"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -45,6 +50,7 @@ alias v=nvim
 alias vim=nvim
 alias nv=nvim
 alias ovim=vim
+alias oh='cd'
 alias os='nvim ~/.zshrc'
 alias ss='source ~/.zshrc'
 alias k='kubectl'
@@ -56,13 +62,12 @@ alias rm="rm -i"
 
 # PATH
 export PATH="/opt/homebrew/share/android-commandlinetools/cmdline-tools/latest/bin:$PATH"
-export JAVA_HOME=$(/usr/libexec/java_home -v 23)
-export PATH=$JAVA_HOME/bin:$PATH
+# JAVA_HOME is now managed by SDKMAN!
 export NODE_PATH=$NODE_PATH:$(npm root -g)
 
 alias vcf="cd ~/.config/nvim && nvim"
 alias python=python3
-alias dc=docker-compose
+alias dc=docker compose
 alias lzd=lazydocker
 # fetch then allow to fuzzy finding branches
 alias gcof='git fetch && git checkout $(git branch | fzf | sed "s/^..//")'
@@ -113,3 +118,17 @@ qss() {
 }
 bindkey -v
 bindkey ^F autosuggest-accept
+
+
+# Ensure SDKMAN's Java comes first in PATH
+export PATH="$JAVA_HOME/bin:$PATH"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+export PATH=$PATH:$HOME/.local/opt/go/bin
+export PATH=$PATH:$HOME/go/bin
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+export PATH="/opt/homebrew/bin:$PATH"

@@ -125,7 +125,7 @@ run = "move-node-to-workspace R"
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iBooksX'
-run = "move-node-to-workspace R"
+run = ["layout floating","move-node-to-workspace R"]
 
 [[on-window-detected]]
 if.app-id = 'info.sioyek.sioyek'
@@ -178,3 +178,16 @@ S = 'main'
 #join 
 # alt-shift-; for service mode
 # alt-shift -> L or H,.... to merge ...
+
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+run = "move-node-to-workspace B"
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = "move-node-to-workspace M"
+
+
+[[on-window-detected]]
+if.app-id = 'com.toggl.daneel'
+run = "move-node-to-workspace M"
